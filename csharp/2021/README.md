@@ -5,4 +5,6 @@ This is the seventh year of Advent of Code. [Visit the intro page.](https://adve
 
 ### C# Solutions
 
+[Day 1: Sonar Sweep](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/01-Sonar-Sweep)
+
 [Day 2: Dive!](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/02-Dive)

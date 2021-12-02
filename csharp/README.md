@@ -5,3 +5,5 @@
 [2015](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2015)
 
 [2019](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2019)
+
+[2021](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021)
