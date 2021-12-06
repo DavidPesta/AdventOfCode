@@ -14,3 +14,5 @@ This is the seventh year of Advent of Code. [Visit the intro page.](https://adve
 [Day 4: Giant Squid](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/04-Giant-Squid)
 
 [Day 5: Hydrothermal Venture](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/05-Hydrothermal-Venture)
+
+[Day 6: Lanternfish](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/06-Lanternfish)
