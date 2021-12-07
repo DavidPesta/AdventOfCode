@@ -16,3 +16,5 @@ This is the seventh year of Advent of Code. [Visit the intro page.](https://adve
 [Day 5: Hydrothermal Venture](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/05-Hydrothermal-Venture)
 
 [Day 6: Lanternfish](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/06-Lanternfish)
+
+[Day 7: The Treachery of Whales](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/07-The-Treachery-of-Whales)
