@@ -18,3 +18,5 @@ This is the seventh year of Advent of Code. [Visit the intro page.](https://adve
 [Day 6: Lanternfish](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/06-Lanternfish)
 
 [Day 7: The Treachery of Whales](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/07-The-Treachery-of-Whales)
+
+[Day 8: Seven Segment Search](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/08-Seven-Segment-Search)
