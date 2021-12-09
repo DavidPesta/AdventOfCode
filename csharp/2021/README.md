@@ -20,3 +20,5 @@ This is the seventh year of Advent of Code. [Visit the intro page.](https://adve
 [Day 7: The Treachery of Whales](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/07-The-Treachery-of-Whales)
 
 [Day 8: Seven Segment Search](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/08-Seven-Segment-Search)
+
+[Day 9: Smoke Basin](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/09-Smoke-Basin)
