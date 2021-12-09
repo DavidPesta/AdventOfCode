@@ -80,6 +80,7 @@ namespace Year2021
 						output += "*";
 					}
 				}
+				NextBasin++;
 				output += "\n";
 			}
 			
