@@ -43,6 +43,9 @@
 		<None Update="2021\09-Smoke-Basin\input.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="2021\10-Syntax-Scoring\input.txt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 	
 </Project>

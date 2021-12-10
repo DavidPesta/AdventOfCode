@@ -22,3 +22,5 @@ This is the seventh year of Advent of Code. [Visit the intro page.](https://adve
 [Day 8: Seven Segment Search](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/08-Seven-Segment-Search)
 
 [Day 9: Smoke Basin](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/09-Smoke-Basin)
+
+[Day 10: Syntax Scoring](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/10-Syntax-Scoring)
