@@ -48,15 +48,20 @@ namespace Year2021
 		private Dictionary<int, Dictionary<int, int>> HeightMap;
 		private Dictionary<int, List<string>> BasinLocations;
 		private Dictionary<string, int> LocationBasin;
-		private int NextBasin;
 		
 		public void Part2(string input)
+		{
+			Way1(input);
+			Way2(input);
+		}
+		
+		private void Way1(string input)
 		{
 			HeightMap = BuildHeightMap(input);
 			
 			BasinLocations = new Dictionary<int, List<string>>();
 			LocationBasin = new Dictionary<string, int>();
-			NextBasin = 0;
+			var nextBasin = 0;
 			
 			var output = Color.Normal;
 			for (var i = 0; i < HeightMap.Count(); i++)
@@ -67,7 +72,7 @@ namespace Year2021
 					{
 						var adjacentBasin = FindAdjacentBasin(i, j);
 						
-						if (adjacentBasin == null) adjacentBasin = NextBasin;
+						if (adjacentBasin == null) adjacentBasin = nextBasin;
 						LocationBasin[$"{i},{j}"] = (int)adjacentBasin;
 						if (!BasinLocations.ContainsKey((int)adjacentBasin)) BasinLocations[(int)adjacentBasin] = new List<string>();
 						BasinLocations[(int)adjacentBasin].Add($"{i},{j}");
@@ -76,16 +81,98 @@ namespace Year2021
 					}
 					else
 					{
-						NextBasin++;
+						nextBasin++;
 						output += "*";
 					}
 				}
-				NextBasin++;
+				nextBasin++;
 				output += "\n";
 			}
 			
 			//Console.WriteLine(output);
 			
+			//DisplayMap();
+			
+			Console.WriteLine($"Way 1: {CalculateFinalAnswer()}");
+		}
+		
+		private void Way2(string input)
+		{
+			HeightMap = BuildHeightMap(input);
+			
+			BasinLocations = new Dictionary<int, List<string>>();
+			LocationBasin = new Dictionary<string, int>();
+			var nextBasin = 0;
+			
+			for (var i = 0; i < HeightMap.Count(); i++)
+			{
+				for (var j = 0; j < HeightMap[i].Count(); j++)
+				{
+					if (HeightMap[i][j] < 9)
+					{
+						if (!LocationBasin.ContainsKey($"{i},{j}"))
+						{
+							FloodFill(i, j, nextBasin);
+							nextBasin++;
+						}
+					}
+				}
+			}
+			
+			//DisplayMap();
+			
+			Console.WriteLine($"Way 2: {CalculateFinalAnswer()}");
+		}
+		
+		private void FloodFill(int i, int j, int basin)
+		{
+			AddLocationToBasin(i, j, basin);
+			
+			var propagators = new Queue<(int, int)>();
+			propagators.Enqueue((i, j));
+			
+			while (propagators.Count > 0)
+			{
+				var propagator = propagators.Dequeue();
+				
+				var pi = propagator.Item1;
+				var pj = propagator.Item2;
+				
+				if (pi > 0 && HeightMap[pi-1][pj] < 9 && !LocationBasin.ContainsKey($"{pi-1},{pj}"))
+				{
+					AddLocationToBasin(pi-1, pj, basin);
+					propagators.Enqueue((pi-1, pj));
+				}
+				
+				if (pj > 0 && HeightMap[pi][pj-1] < 9 && !LocationBasin.ContainsKey($"{pi},{pj-1}"))
+				{
+					AddLocationToBasin(pi, pj-1, basin);
+					propagators.Enqueue((pi, pj-1));
+				}
+				
+				if (pi < HeightMap.Count()-1 && HeightMap[pi+1][pj] < 9 && !LocationBasin.ContainsKey($"{pi+1},{pj}"))
+				{
+					AddLocationToBasin(pi+1, pj, basin);
+					propagators.Enqueue((pi+1, pj));
+				}
+				
+				if (pj < HeightMap[pi].Count()-1 && HeightMap[pi][pj+1] < 9 && !LocationBasin.ContainsKey($"{pi},{pj+1}"))
+				{
+					AddLocationToBasin(pi, pj+1, basin);
+					propagators.Enqueue((pi, pj+1));
+				}
+			}
+		}
+		
+		private void AddLocationToBasin(int i, int j, int basin)
+		{
+			LocationBasin[$"{i},{j}"] = basin;
+			if (!BasinLocations.ContainsKey(basin)) BasinLocations[basin] = new List<string>();
+			BasinLocations[basin].Add($"{i},{j}");
+		}
+		
+		private void DisplayMap()
+		{
 			var numberedOutput = Color.Normal;
 			for (var i = 0; i < HeightMap.Count(); i++)
 			{
@@ -105,21 +192,6 @@ namespace Year2021
 				numberedOutput += "\n";
 			}
 			Console.WriteLine(numberedOutput);
-			
-			var basinSizes = new List<int>();
-			foreach (var kvp in BasinLocations)
-			{
-				var BasinLocation = kvp.Value;
-				basinSizes.Add(BasinLocation.Count());
-				Console.WriteLine($"{(char)(kvp.Key % 93 + 33)} - {BasinLocation.Count()}");
-			}
-			
-			var orderedSizes = basinSizes.OrderBy(x => x).ToList();
-			//foreach (var orderedSize in orderedSizes) Console.WriteLine(orderedSize);
-			
-			var answer = orderedSizes[orderedSizes.Count()-1] * orderedSizes[orderedSizes.Count()-2] * orderedSizes[orderedSizes.Count()-3];
-			
-			Console.WriteLine(answer);
 		}
 		
 		private int? FindAdjacentBasin(int i, int j)
@@ -172,6 +244,22 @@ namespace Year2021
 			}
 			
 			return heightMap;
+		}
+		
+		private int CalculateFinalAnswer()
+		{
+			var basinSizes = new List<int>();
+			foreach (var kvp in BasinLocations)
+			{
+				var BasinLocation = kvp.Value;
+				basinSizes.Add(BasinLocation.Count());
+				//Console.WriteLine($"{(char)(kvp.Key % 93 + 33)} - {BasinLocation.Count()}");
+			}
+			
+			var orderedSizes = basinSizes.OrderBy(x => x).ToList();
+			//foreach (var orderedSize in orderedSizes) Console.WriteLine(orderedSize);
+			
+			return orderedSizes[orderedSizes.Count()-1] * orderedSizes[orderedSizes.Count()-2] * orderedSizes[orderedSizes.Count()-3];
 		}
 	}
 }
