@@ -26,3 +26,5 @@ This is the seventh year of Advent of Code. [Visit the intro page.](https://adve
 [Day 10: Syntax Scoring](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/10-Syntax-Scoring)
 
 [Day 11: Dumbo Octopus](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/11-Dumbo-Octopus)
+
+[Day 12: Passage Pathing](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/12-Passage-Pathing)
