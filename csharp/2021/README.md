@@ -30,3 +30,5 @@ This is the seventh year of Advent of Code. [Visit the intro page.](https://adve
 [Day 12: Passage Pathing](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/12-Passage-Pathing)
 
 [Day 13: Transparent Origami](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/13-Transparent-Origami)
+
+[Day 14: Extended Polymerization](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/14-Extended-Polymerization)

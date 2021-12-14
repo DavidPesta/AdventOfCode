@@ -55,6 +55,9 @@
 		<None Update="2021\13-Transparent-Origami\input.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="2021\14-Extended-Polymerization\input.txt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 	
 </Project>
