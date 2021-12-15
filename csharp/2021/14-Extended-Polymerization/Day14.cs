@@ -13,7 +13,7 @@ namespace Year2021
 			
 			for (var i = 0; i < 10; i++)
 			{
-				template = RunStep(template, rules);
+				template = RunStepPart1(template, rules);
 			}
 			
 			Dictionary<char, int> elementCounts = new Dictionary<char, int>();
@@ -26,13 +26,12 @@ namespace Year2021
 				elementCounts[element]++;
 			}
 			
-			var largestCount = 0;
-			var smallestCount = 999999999;
-			foreach (var kvp in elementCounts)
+			long? largestCount = null;
+			long? smallestCount = null;
+			foreach (var (_, count) in elementCounts)
 			{
-				var count = kvp.Value;
-				if (count > largestCount) largestCount = count;
-				if (count < smallestCount) smallestCount = count;
+				if (largestCount == null || count > largestCount) largestCount = count;
+				if (smallestCount == null || count < smallestCount) smallestCount = count;
 			}
 			
 			Console.WriteLine(largestCount - smallestCount);
@@ -48,9 +47,8 @@ namespace Year2021
 			var template = LoadTemplate(input);
 			Rules = LoadRules(input);
 			
-			foreach (var rule in Rules)
+			foreach (var (search, replace) in Rules)
 			{
-				(var search, var replace) = rule;
 				RulesLookup[search] = replace;
 				RuleCounts[search] = 0;
 				
@@ -65,10 +63,8 @@ namespace Year2021
 				ElementCounts[element]++;
 			}
 			
-			foreach (var rule in Rules)
+			foreach (var (search, replace) in Rules)
 			{
-				(var search, var replace) = rule;
-				
 				var startIndex = 0;
 				int searchIndexFound;
 				do
@@ -90,9 +86,8 @@ namespace Year2021
 			
 			long? largestCount = null;
 			long? smallestCount = null;
-			foreach (var kvp in ElementCounts)
+			foreach (var (_, count) in ElementCounts)
 			{
-				var count = kvp.Value;
 				if (largestCount == null || count > largestCount) largestCount = count;
 				if (smallestCount == null || count < smallestCount) smallestCount = count;
 			}
@@ -103,16 +98,13 @@ namespace Year2021
 		private void RunStepPart2()
 		{
 			var newRuleCounts = new Dictionary<string, long>();
-			foreach (var rule in Rules)
+			foreach (var (search, replace) in Rules)
 			{
-				(var search, var replace) = rule;
 				newRuleCounts[search] = 0;
 			}
 			
-			foreach (var ruleCount in RuleCounts)
+			foreach (var (rule, count) in RuleCounts)
 			{
-				var rule = ruleCount.Key;
-				var count = ruleCount.Value;
 				var replace = RulesLookup[rule];
 				
 				ElementCounts[replace] += count;
@@ -134,14 +126,12 @@ namespace Year2021
 			RuleCounts = newRuleCounts;
 		}
 		
-		private string RunStep(string template, List<(string, char)> rules)
+		private string RunStepPart1(string template, List<(string, char)> rules)
 		{
 			List<(int, char)> insertions = new List<(int, char)>();
 			
-			foreach (var rule in rules)
+			foreach (var (search, replace) in rules)
 			{
-				(var search, var replace) = rule;
-				
 				var startIndex = 0;
 				int searchIndexFound;
 				do
@@ -158,9 +148,8 @@ namespace Year2021
 			
 			var orderedInsertions = insertions.OrderByDescending(i => i.Item1).ToList();
 			
-			foreach (var insertion in orderedInsertions)
+			foreach (var (index, insertChar) in orderedInsertions)
 			{
-				(var index, var insertChar) = insertion;
 				template = template.Insert(index, insertChar.ToString());
 			}
 			
