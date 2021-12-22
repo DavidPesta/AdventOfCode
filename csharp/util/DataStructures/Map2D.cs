@@ -2,7 +2,7 @@ namespace AdventOfCode
 {
 	public class Map2D<T>
 	{
-		Dictionary<long, Dictionary<long, T>> Map = new Dictionary<long, Dictionary<long, T>>();
+		Dictionary<(long, long), T> Map = new Dictionary<(long, long), T>();
 		
 		public long? Xmin { get; private set; }
 		public long? Xmax { get; private set; }
@@ -12,14 +12,11 @@ namespace AdventOfCode
 		public T this[long x, long y]
 		{
 			get {
-				if (!Map.ContainsKey(x)) return default(T);
-				if (!Map[x].ContainsKey(y)) return default(T);
-				return Map[x][y];
+				if (!Map.ContainsKey((x, y))) return default(T);
+				return Map[(x, y)];
 			}
 			set {
-				if (!Map.ContainsKey(x)) Map[x] = new Dictionary<long, T>();
-				
-				Map[x][y] = value;
+				Map[(x, y)] = value;
 				
 				if (Xmin == null || Xmin > x) Xmin = x;
 				if (Xmax == null || Xmax < x) Xmax = x;
