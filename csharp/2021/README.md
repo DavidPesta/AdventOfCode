@@ -32,3 +32,5 @@ This is the seventh year of Advent of Code. [Visit the intro page.](https://adve
 [Day 13: Transparent Origami](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/13-Transparent-Origami)
 
 [Day 14: Extended Polymerization](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/14-Extended-Polymerization)
+
+[Day 15: Chiton](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/15-Chiton)

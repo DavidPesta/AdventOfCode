@@ -58,6 +58,9 @@
 		<None Update="2021\14-Extended-Polymerization\input.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="2021\15-Chiton\input.txt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 	
 </Project>
