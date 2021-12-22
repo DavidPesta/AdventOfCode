@@ -27,17 +27,14 @@ namespace Year2021
 		
 		private long FindSmallestRisk(Map2D<Location> map, long x1, long y1, long x2, long y2)
 		{
-			List<Location> orderedPathRiskLocationsToPropagate = new List<Location>();
+			var orderedPathRiskLocationsToPropagate = new PriorityQueue<Location, long>();
 			
 			map[x1, y1].PathRisk = 0;
-			orderedPathRiskLocationsToPropagate.Add(map[x1, y1]);
+			orderedPathRiskLocationsToPropagate.Enqueue(map[x1, y1], (long)map[x1, y1].PathRisk);
 			
-			while (!orderedPathRiskLocationsToPropagate.Contains(map[x2, y2]))
+			while (orderedPathRiskLocationsToPropagate.Count > 0)
 			{
-				orderedPathRiskLocationsToPropagate = orderedPathRiskLocationsToPropagate.OrderBy(x => x.PathRisk).ToList();
-				
-				var location = orderedPathRiskLocationsToPropagate[0];
-				orderedPathRiskLocationsToPropagate.RemoveAt(0);
+				var location = orderedPathRiskLocationsToPropagate.Dequeue();
 				
 				var adjacentLocations = location.FetchAdjacentLocations(map);
 				foreach (var adjacentLocation in adjacentLocations)
@@ -45,7 +42,7 @@ namespace Year2021
 					if (adjacentLocation.PathRisk == null || location.PathRisk + adjacentLocation.LocationRisk < adjacentLocation.PathRisk)
 					{
 						adjacentLocation.PathRisk = location.PathRisk + adjacentLocation.LocationRisk;
-						orderedPathRiskLocationsToPropagate.Add(adjacentLocation);
+						orderedPathRiskLocationsToPropagate.Enqueue(adjacentLocation, (long)adjacentLocation.PathRisk);
 					}
 				}
 				
