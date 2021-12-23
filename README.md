@@ -5,7 +5,7 @@ Advent of Code is a series of programming puzzles that are presented at the begi
 I am sharing my personal solutions on GitHub for future reference and for anyone who might be interested.
 
 ## [C# Solutions](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp)
-Summary of Completion: [2015](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2015) (1), [2019](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2019) (1-2), [2021](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021) (1-15)
+Summary of Completion: [2015](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2015) (1), [2019](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2019) (1-2), [2021](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021) (1-15, 22)
 
 ## [Javascript Solutions](https://github.com/DavidPesta/AdventOfCode/tree/main/javascript)
 Summary of Completion: [2015](https://github.com/DavidPesta/AdventOfCode/tree/main/javascript/2015) (1-2), [2019](https://github.com/DavidPesta/AdventOfCode/tree/main/javascript/2019) (1-4), [2021](https://github.com/DavidPesta/AdventOfCode/tree/main/javascript/2021) (1)

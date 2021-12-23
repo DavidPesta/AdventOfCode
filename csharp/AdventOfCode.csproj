@@ -61,6 +61,9 @@
 		<None Update="2021\15-Chiton\input.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="2021\22-Reactor-Reboot\input.txt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 	
 </Project>
