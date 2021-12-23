@@ -9,6 +9,18 @@ namespace AdventOfCode
 		public long? Ymin { get; private set; }
 		public long? Ymax { get; private set; }
 		
+		private bool ApplyValueCounts;
+		private Dictionary<T, long> ValueCounts;
+		
+		public Map2D(bool applyValueCounts = true)
+		{
+			ApplyValueCounts = applyValueCounts;
+			if (ApplyValueCounts)
+			{
+				ValueCounts = new Dictionary<T, long>();
+			}
+		}
+		
 		public T this[long x, long y]
 		{
 			get {
@@ -16,6 +28,13 @@ namespace AdventOfCode
 				return Map[(x, y)];
 			}
 			set {
+				if (ApplyValueCounts)
+				{
+					if (Map.ContainsKey((x, y))) ValueCounts[Map[(x, y)]]--;
+					if (!ValueCounts.ContainsKey(value)) ValueCounts[value] = 0;
+					ValueCounts[value]++;
+				}
+				
 				Map[(x, y)] = value;
 				
 				if (Xmin == null || Xmin > x) Xmin = x;
@@ -36,6 +55,11 @@ namespace AdventOfCode
 		{
 			if (Ymin == null || Ymax == null) return 0;
 			return (long)Ymax - (long)Ymin + 1;
+		}
+		
+		public long GetValueCount(T key)
+		{
+			return ValueCounts[key];
 		}
 		
 		public override string ToString()
