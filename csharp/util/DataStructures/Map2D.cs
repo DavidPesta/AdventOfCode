@@ -62,6 +62,22 @@ namespace AdventOfCode
 			return ValueCounts[key];
 		}
 		
+		public static Map2D<char> LoadInputToCharValues(string input)
+		{
+			var map = new Map2D<char>();
+			
+			var lines = input.Split("\n");
+			for (long y = 0; y < lines.Count(); y++)
+			{
+				for (long x = 0; x < lines[y].Length; x++)
+				{
+					map[x, y] = lines[y][(int)x];
+				}
+			}
+			
+			return map;
+		}
+		
 		public override string ToString()
 		{
 			var output = "";
@@ -72,7 +88,7 @@ namespace AdventOfCode
 				{
 					output += this[x, y].ToString();
 				}
-				output += "\n\n";
+				if (y != Ymax) output += "\n";
 			}
 			
 			return output;
