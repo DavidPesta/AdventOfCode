@@ -15,14 +15,25 @@ namespace Year2021
 		protected ushort LengthNumber;
 		protected List<Packet> SubPackets = new List<Packet>();
 		
-		public delegate long Operation();
-		public Dictionary<PacketType, Operation> Operations = new Dictionary<PacketType, Operation>();
+		public delegate long OperationMethod(Operator o);
+		public OperationMethod Operation;
+		public static readonly Dictionary<PacketType, OperationMethod> Operations = new Dictionary<PacketType, OperationMethod>()
+		{
+			{PacketType.Sum, Sum},
+			{PacketType.Product, Product},
+			{PacketType.Minimum, Minimum},
+			{PacketType.Maximum, Maximum},
+			{PacketType.GreaterThan, GreaterThan},
+			{PacketType.LessThan, LessThan},
+			{PacketType.EqualTo, EqualTo}
+		};
 		
 		private long? ValueCache = null;
 		public override long Value
 		{
-			get {
-				if (ValueCache == null) ValueCache = Operations[Type]();
+			get
+			{
+				if (ValueCache == null) ValueCache = Operation(this); // Note: This cache isn't really needed here because a full traversal only calculates this once.
 				return (long)ValueCache;
 			}
 			protected set { throw new Exception("Cannot set the Value on an operator."); }
@@ -30,13 +41,7 @@ namespace Year2021
 		
 		public Operator(string bin, short version, short typeID) : base(version, typeID)
 		{
-			Operations[PacketType.Sum] = Sum;
-			Operations[PacketType.Product] = Product;
-			Operations[PacketType.Minimum] = Minimum;
-			Operations[PacketType.Maximum] = Maximum;
-			Operations[PacketType.GreaterThan] = GreaterThan;
-			Operations[PacketType.LessThan] = LessThan;
-			Operations[PacketType.EqualTo] = EqualTo;
+			Operation = Operations[Type];
 			
 			LengthTypeMode = (LengthTypeMode)ushort.Parse(bin[6].ToString());
 			
@@ -96,11 +101,11 @@ namespace Year2021
 			return version;
 		}
 		
-		public long Sum()
+		public static long Sum(Operator o)
 		{
 			long value = 0;
 			
-			foreach (var subPacket in SubPackets)
+			foreach (var subPacket in o.SubPackets)
 			{
 				value += subPacket.Value;
 			}
@@ -108,11 +113,11 @@ namespace Year2021
 			return value;
 		}
 		
-		public long Product()
+		public static long Product(Operator o)
 		{
 			long value = 1;
 			
-			foreach (var subPacket in SubPackets)
+			foreach (var subPacket in o.SubPackets)
 			{
 				value *= subPacket.Value;
 			}
@@ -120,11 +125,11 @@ namespace Year2021
 			return value;
 		}
 		
-		public long Minimum()
+		public static long Minimum(Operator o)
 		{
 			var value = long.MaxValue;
 			
-			foreach (var subPacket in SubPackets)
+			foreach (var subPacket in o.SubPackets)
 			{
 				if (subPacket.Value < value) value = subPacket.Value;
 			}
@@ -132,11 +137,11 @@ namespace Year2021
 			return value;
 		}
 		
-		public long Maximum()
+		public static long Maximum(Operator o)
 		{
 			var value = long.MinValue;
 			
-			foreach (var subPacket in SubPackets)
+			foreach (var subPacket in o.SubPackets)
 			{
 				if (subPacket.Value > value) value = subPacket.Value;
 			}
@@ -144,21 +149,21 @@ namespace Year2021
 			return value;
 		}
 		
-		public long GreaterThan()
+		public static long GreaterThan(Operator o)
 		{
-			if (SubPackets[0].Value > SubPackets[1].Value) return 1;
+			if (o.SubPackets[0].Value > o.SubPackets[1].Value) return 1;
 			else return 0;
 		}
 		
-		public long LessThan()
+		public static long LessThan(Operator o)
 		{
-			if (SubPackets[0].Value < SubPackets[1].Value) return 1;
+			if (o.SubPackets[0].Value < o.SubPackets[1].Value) return 1;
 			else return 0;
 		}
 		
-		public long EqualTo()
+		public static long EqualTo(Operator o)
 		{
-			if (SubPackets[0].Value == SubPackets[1].Value) return 1;
+			if (o.SubPackets[0].Value == o.SubPackets[1].Value) return 1;
 			else return 0;
 		}
 	}
