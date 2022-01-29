@@ -37,6 +37,8 @@ This is the seventh year of Advent of Code. [Visit the intro page.](https://adve
 
 [Day 16: Packet Decoder](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/16-Packet-Decoder)
 
+[Day 17: Trick Shot](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/17-Trick-Shot)
+
 [Day 22: Reactor Reboot](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/22-Reactor-Reboot)
 
 [Day 25: Sea Cucumber](https://github.com/DavidPesta/AdventOfCode/tree/main/csharp/2021/25-Sea-Cucumber)
