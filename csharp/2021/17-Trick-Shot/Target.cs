@@ -30,13 +30,11 @@ namespace Year2021
 			long curX = 0;
 			long curY = 0;
 			
-			var bottomY = Math.Min(Y1, Y2);
-			
 			// As soon as the probe has 1. a downward velocity and 2. is positioned below the target,
 			// there is no way for it to hit the target, so the loop is done and return false.
-			while (yvel >= 0 || curY >= bottomY)
+			while (yvel >= 0 || curY >= Y1)
 			{
-				if (curX >= Math.Min(X1, X2) && curX <= Math.Max(X1, X2) && curY >= Math.Min(Y1, Y2) && curY <= Math.Max(Y1, Y2))
+				if (curX >= X1 && curX <= X2 && curY >= Y1 && curY <= Y2)
 				{
 					return true;
 				}

@@ -8,14 +8,9 @@ namespace Year2021
 		[Test]
 		public void Part1HighestPositionIfTargetHeightTouchesOrigin()
 		{
-			var target = new Target("target area: x=265..287, y=103..-58");
+			var target = new Target("target area: x=265..287, y=-103..58");
 			var solver = new Day17Solver(target);
 			var highestProbePosition = solver.FindHighestProbePositionWhenLaunchedWithStyle();
-			Assert.AreEqual(long.MaxValue, highestProbePosition);
-			
-			target = new Target("target area: x=265..287, y=-103..58");
-			solver = new Day17Solver(target);
-			highestProbePosition = solver.FindHighestProbePositionWhenLaunchedWithStyle();
 			Assert.AreEqual(long.MaxValue, highestProbePosition);
 		}
 		
@@ -31,7 +26,7 @@ namespace Year2021
 		[Test]
 		public void Part1HighestPositionIfTargetHeightIsAboveOrigin()
 		{
-			var target = new Target("target area: x=20..30, y=10..5");
+			var target = new Target("target area: x=20..30, y=5..10");
 			var solver = new Day17Solver(target);
 			var highestProbePosition = solver.FindHighestProbePositionWhenLaunchedWithStyle();
 			Assert.AreEqual(55, highestProbePosition);
