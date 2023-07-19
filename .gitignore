@@ -1,1 +1,7 @@
 .vscode
+
+# For Bun to work properly, go into the typescript folder and run "bun init" to generate these files, then delete index.ts
+node_modules/
+bun.lockb
+package.json
+tsconfig.json

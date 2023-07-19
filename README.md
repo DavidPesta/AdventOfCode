@@ -14,4 +14,4 @@ Summary of Completion: [2015](https://github.com/DavidPesta/AdventOfCode/tree/ma
 Summary of Completion: [2018](https://github.com/DavidPesta/AdventOfCode/tree/main/python3/2018) (1-3), [2021](https://github.com/DavidPesta/AdventOfCode/tree/main/python3/2021) (1)
 
 ## [TypeScript](https://github.com/DavidPesta/AdventOfCode/tree/main/typescript) (Bun, Deno, TS-Node)
-Summary of Completion: [2015](https://github.com/DavidPesta/AdventOfCode/tree/main/typescript/2015) (1-4)
+Summary of Completion: [2015](https://github.com/DavidPesta/AdventOfCode/tree/main/typescript/2015) (1-4), [2022](https://github.com/DavidPesta/AdventOfCode/tree/main/typescript/2022) (1)
